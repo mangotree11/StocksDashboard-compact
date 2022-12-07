@@ -1,0 +1,213 @@
+body {
+  background-color: whitesmoke;
+  font-size: 0.8em;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  padding: 8px;
+  background-color: #ffffff;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: rgba(193, 193, 193, 0.126);
+}
+
+.navbar {
+  text-align: left;
+  width: 700px;
+  margin: auto;
+  background: white;
+  padding: 0.5em;
+
+  nav {
+    display: inline-block;
+    padding: 0.1em;
+
+    .primary-nav {
+      width: 350px;
+      display: inline-flex;
+    }
+    .secondary-nav {
+      display: inline-flex;
+    }
+  }
+}
+
+.navbar input[type="text"] {
+  font-size: 1em;
+  max-width: 150px;
+  height: 25px;
+}
+
+li.premium-cta a {
+  color: blue;
+  border: 3px solid blue;
+  border-radius: 3em;
+  font-weight: bold;
+
+  &:hover {
+    background: blue;
+    color: white;
+  }
+}
+
+.logo {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: black;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+
+  span {
+    color: rgba(0, 0, 255, 0.8);
+  }
+}
+
+.mobile-menu {
+  cursor: pointer;
+  width: 25x;
+  height: 25px;
+  transition: 3s ease-in; // how long it takes to change color when hovering over menu
+  filter: none;
+}
+
+.mobile-menu:hover {
+  filter: saturate(2878%); // saturation change when you hover over menu
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  //dropdown menu
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 12px;
+  z-index: 2;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  background-color: white; // to make sure the dropdown background is white
+}
+
+.dropdown-content:hover li a {
+  // so that the buttons don't get highlighted when hovering
+  background-color: white;
+}
+
+.copyright {
+  text-align: center;
+  cursor: default;
+  pointer-events: none;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.ticker {
+  height: auto;
+  width: 99%;
+  margin: auto;
+  float: bottom;
+  display: block;
+  border: none;
+  pointer-events: none;
+}
+.btc {
+  height: auto;
+  width: 100%;
+  margin: auto;
+  float: none;
+  display: block;
+  pointer-events: none;
+}
+.eth {
+  height: auto;
+  width: 100%;
+  margin: auto;
+  float: none;
+  display: block;
+  pointer-events: none;
+}
+
+.tradingview {
+  width: 330;
+}
+
+.stocks {
+  height: auto;
+  width: 100%;
+  margin: auto;
+  float: bottom;
+  display: block;
+  border: none;
+  pointer-events: default;
+}
+
+.stockticker {
+  width: 100%;
+  pointer-events: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style the search field */
+form.searchbar input[type="text"] {
+  padding: 10px;
+  font-size: 11px;
+  float: left;
+  width: 75%;
+  background: #ffffff;
+
+}
+
+/* Style the submit button */
+form.searchbar button {
+  float: left;
+  width: 10%;
+  padding: 10px;
+  color: white;
+  font-size: 17px;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.searchbar button:hover {
+  background: #ffffff;
+}
+
+/* Clear floats */
+form.searchbar::after {
+  content: "";
+  clear: both;
+  display: float;
+}

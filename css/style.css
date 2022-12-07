@@ -1,0 +1,296 @@
+body {
+  background-color: whitesmoke;
+  font-size: 0.8em;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  padding: 8px;
+  background-color: #ffffff;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: rgba(193, 193, 193, 0.126);
+}
+
+.navbar {
+  text-align: left;
+  width: 800px;
+  margin: auto;
+  background: white;
+  padding: 1.1em;
+}
+
+.navbar nav {
+  display: inline-block;
+  padding: .1em;
+}
+
+.navbar nav .primary-nav {
+  width: 350px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.navbar nav .secondary-nav {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.navbar input[type="text"] {
+  font-size: 1em;
+  max-width: 100px;
+  height: 25px;
+}
+
+li.premium-cta a {
+  color: blue;
+  border: 3px solid blue;
+  border-radius: 3em;
+  font-weight: bold;
+  display: none;
+  
+}
+
+li.premium-cta a:hover {
+  background: blue;
+  color: white;
+}
+
+.logo {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: black;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.logo span {
+  color: rgba(0, 0, 255, 0.8);
+}
+
+.mobile-menu {
+  cursor: pointer;
+  width: 25x;
+  height: 25px;
+  -webkit-transition: 3s ease-in;
+  transition: 3s ease-in;
+  -webkit-filter: none;
+  filter: none;
+}
+
+.mobile-menu:hover {
+  -webkit-filter: saturate(2878%);
+  filter: saturate(2878%);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 100px;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 12px;
+  z-index: 2;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  background-color: white;
+}
+
+.dropdown-content:hover li a {
+  background-color: white;
+}
+
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.ticker {
+  height: auto;
+  width: 99%;
+  margin: auto;
+  float: bottom;
+  display: block;
+  border: none;
+  pointer-events: none;
+}
+
+.btc {
+  height: auto;
+  width: 95%;
+  margin: auto;
+  float: none;
+  display: block;
+  pointer-events: none;
+  display: none;
+  
+}
+
+.eth {
+  height: auto;
+  width: 95%;
+  margin: auto;
+  float: none;
+  display: block;
+  pointer-events: none;
+  margin-left:auto;
+  margin-right:auto;
+  display: none;
+}
+
+
+.gridlist {
+  width: 100%;
+  height: 50%;
+  padding: .1px;
+
+}
+
+.tradingview1 {
+  width: 95%;
+  padding: 1px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.tradingview2 {
+  width: 100%;
+  
+}
+
+.tradingview3 {
+  width: 100%;
+  
+}
+
+.tradingview4 {
+  width: 100%;
+  
+  
+}
+
+.stocks {
+  height: auto;
+  width: 100%;
+  padding: 1px;
+  float: none;
+  display: block;
+  border: none;
+  pointer-events: default;
+}
+
+.news {
+  height: auto;
+  width: 100%;
+  margin: auto;
+  float: none;
+  display: block;
+  border: none;
+  padding: 1px;
+  pointer-events: default;
+}
+
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: center;
+  width: 50%;
+}
+
+.row {
+  float: none;
+  padding: 1px;
+}
+
+
+
+
+.stockticker {
+  width: 100%;
+  pointer-events: none;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Style the search field */
+form.searchbar input[type="text"] {
+  padding: 10px;
+  height: 10px;
+  font-size: 11px;
+  float: left;
+  width: 100%;
+  background: #ffffff;
+  display: none;
+  
+}
+
+/* Style the submit button */
+form.searchbar button {
+  float: left;
+  width: 10.5%;
+  padding: 10.5px;
+  color: white;
+  font-size: 17px;
+  border-left: none;
+  /* Prevent double borders */
+  cursor: pointer;
+  display: none;
+}
+
+form.searchbar button:hover {
+  background: #ffffff;
+  
+}
+
+/* Clear floats */
+form.searchbar::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/*# sourceMappingURL=style.css.map */
+
+.copyright {
+  text-align: center;
+  cursor: default;
+  pointer-events: none;
+}
