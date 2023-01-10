@@ -10,7 +10,7 @@
   <div id="chart-container"></div>
   <script>
     // Make an API request to the Alpha Vantage API
-    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=MSFT&apikey=T9E9P8GECPM5AX8S)
+    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=MSFT&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
       .then(data => {
         // Parse the data to extract the information we need
