@@ -12,7 +12,7 @@
   <div id="chart-container-2"></div>
   <script>
     // Make an API request to the Alpha Vantage API for the first stock
-    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=MSFT&apikey='T9E9P8GECPM5AX8S')
+    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=MSFT&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
       .then(data => {
         // Parse the data to extract the information we need
@@ -21,53 +21,4 @@
         for (let date in seriesData) {
           let point = [
             Date.parse(date), // convert the date string to a timestamp
-            parseFloat(seriesData[date]['4. close']) // convert the close price to a number
-          ];
-          series.push(point);
-        }
-        // Reverse the array so that the data is in chronological order
-        series = series.reverse();
-        // Create the chart
-        Highcharts.chart('chart-container-1', {
-          chart: {
-            type: 'line'
-          },
-          title: {
-            text: 'Stock Price for MSFT'
-          },
-          xAxis: {
-            type: 'datetime'
-          },
-          yAxis: {
-            title: {
-              text: 'Price'
-            }
-          },
-          series: [{
-            name: 'MSFT',
-            data: series
-          }]
-        });
-      });
-
-    // Make an API request to the Alpha Vantage API for the second stock
-    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=AAPL&apikey='T9E9P8GECPM5AX8S')
-      .then(response => response.json())
-      .then(data => {
-        // Parse the data to extract the information we need
-        let seriesData = data['Time Series (Daily)'];
-        let series = [];
-        for (let date in seriesData) {
-          let point = [
-            Date.parse(date), // convert the date string to a timestamp
-            parseFloat(seriesData[date]['4. close']) // convert the close price to a number
-          ];
-          series.push(point);
-        }
-        // Reverse the array so that the data is in chronological order
-        series = series.reverse();
-        // Create the chart
-        Highcharts.chart('chart-container-2', {
-          chart: {
-            type: 'line'
-         
+            parseFloat(seriesData[date]['4. close']) //
