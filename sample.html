@@ -10,7 +10,7 @@
   <div id="chart-container"></div>
   <script>
     // Make an API request to the Alpha Vantage API
-    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=AAPL&apikey=T9E9P8GECPM5AX8S')
+    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=1min&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
       .then(data => {
         // Parse the data to extract the information we need
@@ -23,18 +23,19 @@
           ];
           series.push(point);
         }
-        // Reverse the array so that the data is in chronological order
-        series = series.reverse();
         // Create the chart
         Highcharts.chart('chart-container', {
           chart: {
             type: 'line'
           },
           title: {
-            text: 'Stock Price for AAPL'
+            text: 'Intraday Stock Price for AAPL'
           },
           xAxis: {
-            type: 'datetime'
+            type: 'datetime',
+            labels: {
+              format: '{value:%Y-%m-%d %H:%M:%S}'
+            },
           },
           yAxis: {
             title: {
