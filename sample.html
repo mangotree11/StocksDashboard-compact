@@ -53,7 +53,7 @@
         });
       });
     
-     // Make an API request to the Alpha Vantage API
+     // Make an API request to the Alpha Vantage API for MSFT
     fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
       .then(data => {
@@ -62,13 +62,13 @@
         let series = [];
         for (let date in seriesData) {
           let point = [
-            new Date(date).getTime(), // convert the date string to a timestamp
-            parseFloat(seriesData[date]['4. close']) // convert the close price to a number
+            new Date(date).getTime(),
+            parseFloat(seriesData[date]['4. close'])
           ];
           series.push(point);
         }
         // Create the chart
-        Highcharts.chart('chart-container', {
+        Highcharts.chart('chart-container-2', {
           chart: {
             type: 'line'
           },
