@@ -5,7 +5,7 @@
   <!-- Load the Highcharts library -->
   <script src="https://code.highcharts.com/highcharts.js"></script>
 </head>
-
+  // CSS style for column view
   <style>
     /* Define a container for the columns */
     .columns {
@@ -17,15 +17,13 @@
       flex: 1; /* Each column should take up equal space */
     }
   </style>
-</head>
-<body>
-  <div class="columns">
-    <!-- Create a container element for the first chart -->
-    <div class="column" id="chart-container-1"></div>
   
-    <!-- Create a container element for the second chart -->
-    <div class="column" id="chart-container-2"></div>
-  </div>
+<body>
+  <!-- Create a container element for the chart -->
+  <div id="chart-container"></div>
+  
+  <!-- Create a container element for the second chart -->
+  <div id="chart-container-2"></div>
   
   <script>
     // Make an API request to the Alpha Vantage API
