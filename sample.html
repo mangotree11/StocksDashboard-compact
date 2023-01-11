@@ -6,7 +6,7 @@
   <script src="https://code.highcharts.com/highcharts.js"></script>
 </head>
 
-  <style>
+   <style>
     /* Define a container for the columns */
     .columns {
       display: flex; /* Use flex layout */
@@ -17,13 +17,15 @@
       flex: 1; /* Each column should take up equal space */
     }
   </style>
-  
+</head>
 <body>
-  <!-- Create a container element for the chart -->
-  <div id="chart-container"></div>
+  <div class="columns">
+    <!-- Create a container element for the first chart -->
+    <div class="column" id="chart-container-1"></div>
   
-  <!-- Create a container element for the second chart -->
-  <div id="chart-container-2"></div>
+    <!-- Create a container element for the second chart -->
+    <div class="column" id="chart-container-2"></div>
+  </div>
   
   <script>
     // Make an API request to the Alpha Vantage API
