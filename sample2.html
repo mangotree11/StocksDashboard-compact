@@ -94,7 +94,7 @@
   </script>
   
   <script>
-    // Make an API request to the Alpha Vantage API for AAPL
+    // Make an API request to the Alpha Vantage API
     fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=5min&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
       .then(data => {
@@ -176,7 +176,7 @@
   </script>
   
   <script>
-    // Make an API request to the Alpha Vantage API for NVDA
+    // Make an API request to the Alpha Vantage API
     fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=NVDA&interval=5min&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
       .then(data => {
@@ -216,7 +216,7 @@
         });
       });
     
-     // Make an API request to the Alpha Vantage API for GOOGL
+     // Make an API request to the Alpha Vantage API for MSFT
     fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=GOOGL&interval=5min&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
       .then(data => {
