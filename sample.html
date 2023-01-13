@@ -6,40 +6,27 @@
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <style>
     /* Define a container for the rows */
-    .rows {
-      display: flex; /* Use flex layout */
-      flex-wrap: wrap; /* Allow the rows to wrap to the next line */
-    }
-
-    /* Define a class for the row elements */
     .row {
-      width: 100%; /* Each row should take up the full width of the container */
-    }
+  display: flex; /* Use flex layout */
+  flex-wrap: wrap; /* Allow the rows to wrap to the next line */
+}
 
-    /* Define a class for the column elements */
-    .column {
-      flex: 1; /* Each column should take up equal space */
-    }
+.column {
+  flex: 1; /* Each column should take up equal space */
+}
   </style>
 </head>
 <body>
-  <div class="rows">
-    <div class="row">
-      <!-- Create a container element for the first chart -->
-      <div class="column" id="chart-container-1"></div>
-    
-      <!-- Create a container element for the second chart -->
-      <div class="column" id="chart-container-2"></div>
-    </div>
-    
-    <div class="row">
-      <!-- Create a container element for the third chart -->
-      <div class="column" id="chart-container-3"></div>
-    
-      <!-- Create a container element for the fourth chart -->
-      <div class="column" id="chart-container-4"></div>
-    </div>
-  </div>
+  
+  <div class="row">
+  <div class="column" id="chart-container-1"></div>
+  <div class="column" id="chart-container-2"></div>
+</div>
+<div class="row">
+  <div class="column" id="chart-container-3"></div>
+  <div class="column" id="chart-container-4"></div>
+</div>
+
   
   <script>
     // Make an API request to the Alpha Vantage API
