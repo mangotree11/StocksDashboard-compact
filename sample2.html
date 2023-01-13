@@ -24,11 +24,7 @@
 </head>
 <body>
   
-<div>
-  <label for="symbol-input">Enter stock symbol:</label>
-  <input type="text" id="symbol-input">
-  <button id="search-button">Search</button>
-</div>
+
   
   <div class="rows">
     <div class="row">
@@ -93,6 +89,12 @@
     });
   </script>
   
+  <div>
+  <label for="symbol-input">Enter stock symbol:</label>
+  <input type="text" id="symbol-input">
+  <button id="search-button">Search</button>
+</div>
+  
   <script>
     // Make an API request to the Alpha Vantage API
     fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=5min&apikey=T9E9P8GECPM5AX8S')
@@ -133,6 +135,12 @@
           }]
         });
       });
+    
+    <div>
+  <label for="symbol-input">Enter stock symbol:</label>
+  <input type="text" id="symbol-input">
+  <button id="search-button">Search</button>
+</div>
     
      // Make an API request to the Alpha Vantage API for MSFT
     fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&apikey=T9E9P8GECPM5AX8S')
