@@ -24,11 +24,11 @@
 </head>
 <body>
   
-    <form id="search-form">
-    <label for="search-input">Search for a stock:</label>
-    <input type="text" id="search-input" name="symbol">
-    <input type="submit" value="Search">
-  </form>
+<div>
+  <label for="symbol-input">Enter stock symbol:</label>
+  <input type="text" id="symbol-input">
+  <button id="search-button">Search</button>
+</div>
   
   <div class="rows">
     <div class="row">
@@ -48,17 +48,49 @@
     </div>
   </div>
   
-  <script>
-    // Get the search form and input element
-    const searchForm = document.getElementById('search-form');
-    const searchInput = document.getElementById('search-input');
-    
-    // Add an event listener to the form to handle form submission
-    searchForm.addEventListener('submit', (event) => {
-      event.preventDefault(); // prevent the form from reloading the page
-      
-      // Get the user's search query from the input field
-      const symbol = searchInput.value;
+ <script>
+    document.getElementById("search-button").addEventListener("click", function() {
+      let symbol = document.getElementById("symbol-input").value;
+      // Make an API request to the Alpha Vantage API
+      fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
+        .then(response => response.json())
+        .then(data => {
+          // Parse the data to extract the information we need
+          let seriesData = data['Time Series (5min)'];
+          let series = [];
+          for (let date in seriesData) {
+            let point = [
+              new Date(date).getTime(), // convert the date string to a timestamp
+              parseFloat(seriesData[date]['4. close']) // convert the close price to a number
+            ];
+            series.push(point);
+          }
+          // Create the chart
+          Highcharts.chart('chart-container-1', {
+            chart: {
+              type: 'line'
+            },
+            title: {
+              text: `Intraday Stock Price for ${symbol}`
+            },
+            xAxis: {
+              type: 'datetime',
+              labels: {
+                format: '{value:%Y-%m-%d %H:%M:%S}'
+              },
+            },
+            yAxis: {
+              title: {
+                text: 'Price'
+              }
+            },
+            series: [{
+              name: symbol,
+              data: series
+            }]
+          });
+        });
+    });
   </script>
   
   <script>
