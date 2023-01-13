@@ -122,5 +122,87 @@
         });
       });
   </script>
+  
+  <script>
+    // Make an API request to the Alpha Vantage API
+    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=NVDA&interval=5min&apikey=T9E9P8GECPM5AX8S')
+      .then(response => response.json())
+      .then(data => {
+        // Parse the data to extract the information we need
+        let seriesData = data['Time Series (5min)'];
+        let series = [];
+        for (let date in seriesData) {
+          let point = [
+            new Date(date).getTime(), // convert the date string to a timestamp
+            parseFloat(seriesData[date]['4. close']) // convert the close price to a number
+          ];
+          series.push(point);
+        }
+        // Create the chart
+        Highcharts.chart('chart-container-3', {
+          chart: {
+            type: 'line'
+          },
+          title: {
+            text: 'Intraday Stock Price for NVDA'
+          },
+          xAxis: {
+            type: 'datetime',
+            labels: {
+              format: '{value:%Y-%m-%d %H:%M:%S}'
+            },
+          },
+          yAxis: {
+            title: {
+              text: 'Price'
+            }
+          },
+          series: [{
+            name: 'NVDA',
+            data: series
+          }]
+        });
+      });
+    
+     // Make an API request to the Alpha Vantage API for MSFT
+    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=GOOGL&interval=5min&apikey=T9E9P8GECPM5AX8S')
+      .then(response => response.json())
+      .then(data => {
+        // Parse the data to extract the information we need
+        let seriesData = data['Time Series (5min)'];
+        let series = [];
+        for (let date in seriesData) {
+          let point = [
+            new Date(date).getTime(),
+            parseFloat(seriesData[date]['4. close'])
+          ];
+          series.push(point);
+        }
+        // Create the chart
+        Highcharts.chart('chart-container-4', {
+          chart: {
+            type: 'line'
+          },
+          title: {
+            text: 'Intraday Stock Price for GOOGL'
+          },
+          xAxis: {
+            type: 'datetime',
+            labels: {
+              format: '{value:%Y-%m-%d %H:%M:%S}'
+            },
+          },
+          yAxis: {
+            title: {
+              text: 'Price'
+            }
+          },
+          series: [{
+            name: 'GOOGL',
+            data: series
+          }]
+        });
+      });
+  </script>
 </body>
 </html>
