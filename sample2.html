@@ -25,8 +25,14 @@
 <body>
   
 <div>
-  <label for="symbol-input">Enter stock symbol:</label>
-  <input type="text" id="symbol-input">
+  <label for="symbol-input-1">Enter stock symbol:</label>
+  <input type="text" id="symbol-input-1">
+  <button id="search-button">Search</button>
+</div>
+  
+<div>
+  <label for="symbol-input-2">Enter stock symbol:</label>
+  <input type="text" id="symbol-input-2">
   <button id="search-button">Search</button>
 </div>
   
@@ -50,7 +56,7 @@
   
  <script>
     document.getElementById("search-button").addEventListener("click", function() {
-      let symbol = document.getElementById("symbol-input").value;
+      let symbol = document.getElementById("symbol-input-1").value;
       // Make an API request to the Alpha Vantage API
       fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
         .then(response => response.json())
@@ -67,6 +73,51 @@
           }
           // Create the chart
           Highcharts.chart('chart-container-1', {
+            chart: {
+              type: 'line'
+            },
+            title: {
+              text: `Intraday Stock Price for ${symbol}`
+            },
+            xAxis: {
+              type: 'datetime',
+              labels: {
+                format: '{value:%Y-%m-%d %H:%M:%S}'
+              },
+            },
+            yAxis: {
+              title: {
+                text: 'Price'
+              }
+            },
+            series: [{
+              name: symbol,
+              data: series
+            }]
+          });
+        });
+    });
+  </script>
+  
+   <script>
+    document.getElementById("search-button").addEventListener("click", function() {
+      let symbol = document.getElementById("symbol-input-2").value;
+      // Make an API request to the Alpha Vantage API
+      fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
+        .then(response => response.json())
+        .then(data => {
+          // Parse the data to extract the information we need
+          let seriesData = data['Time Series (5min)'];
+          let series = [];
+          for (let date in seriesData) {
+            let point = [
+              new Date(date).getTime(), // convert the date string to a timestamp
+              parseFloat(seriesData[date]['4. close']) // convert the close price to a number
+            ];
+            series.push(point);
+          }
+          // Create the chart
+          Highcharts.chart('chart-container-2', {
             chart: {
               type: 'line'
             },
