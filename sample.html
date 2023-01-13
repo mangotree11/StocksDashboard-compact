@@ -127,7 +127,7 @@
   
     <script>
     // Make an API request to the Alpha Vantage API for ^GSPC
-    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=^GSPC&interval=5min&apikey=T9E9P8GECPM5AX8S')
+    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=GSPC&interval=5min&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
       .then(data => {
         // Parse the data to extract the information we need
@@ -146,7 +146,7 @@
             type: 'line'
           },
           title: {
-            text: 'Intraday Stock Price for ^GSPC'
+            text: 'Intraday Stock Price for GSPC'
           },
           xAxis: {
             type: 'datetime',
@@ -160,7 +160,7 @@
             }
           },
           series: [{
-            name: '^GSPC',
+            name: 'GSPC',
             data: series
           }]
         });
