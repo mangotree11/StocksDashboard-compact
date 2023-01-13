@@ -24,16 +24,16 @@
 </head>
 <body>
   
-<div>
-  <label for="symbol-input">Enter stock symbol:</label>
-  <input type="text" id="symbol-input">
-  <button id="search-button">Search</button>
-</div>
+
   
   <div class="rows">
     <div class="row">
+      
+      
+      
       <!-- Create a container element for the first chart -->
-      <div class="column" id="chart-container-1"></div>
+      <div class="column" id="chart-container-1">
+      </div>
     
       <!-- Create a container element for the second chart -->
       <div class="column" id="chart-container-2"></div>
@@ -94,7 +94,7 @@
   </script>
   
   <script>
-    // Make an API request to the Alpha Vantage API
+    // Make an API request to the Alpha Vantage API for AAPL
     fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=5min&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
       .then(data => {
@@ -176,7 +176,7 @@
   </script>
   
   <script>
-    // Make an API request to the Alpha Vantage API
+    // Make an API request to the Alpha Vantage API for NVDA
     fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=NVDA&interval=5min&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
       .then(data => {
@@ -216,7 +216,7 @@
         });
       });
     
-     // Make an API request to the Alpha Vantage API for MSFT
+     // Make an API request to the Alpha Vantage API for GOOGL
     fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=GOOGL&interval=5min&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
       .then(data => {
