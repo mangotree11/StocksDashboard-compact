@@ -6,42 +6,26 @@
   <script src="https://code.highcharts.com/highcharts.js"></script>
 </head>
 
-<style>
-    /* Define a container for the rows */
-    .rows {
-        display: flex; /* Use flex layout */
-        flex-wrap: wrap;
-    }
-
+   <style>
     /* Define a container for the columns */
     .columns {
-        display: flex; /* Use flex layout */
+      display: flex; /* Use flex layout */
     }
 
     /* Define a class for the column elements */
     .column {
-        flex: 1; /* Each column should take up equal space */
+      flex: 1; /* Each column should take up equal space */
     }
-</style>
-
+  </style>
+</head>
 <body>
-    <div class="rows">
-        <div class="columns">
-            <!-- Create a container element for the first chart -->
-            <div class="column" id="chart-container-1"></div>
-          
-            <!-- Create a container element for the second chart -->
-            <div class="column" id="chart-container-2"></div>
-        </div>
-      
-        <div class="columns">
-            <!-- Create a container element for the third chart -->
-            <div class="column" id="chart-container-3"></div>
-          
-            <!-- Create a container element for the fourth chart -->
-            <div class="column" id="chart-container-4"></div>
-        </div>
-    </div>
+  <div class="columns">
+    <!-- Create a container element for the first chart -->
+    <div class="column" id="chart-container-1"></div>
+  
+    <!-- Create a container element for the second chart -->
+    <div class="column" id="chart-container-2"></div>
+  </div>
   
   <script>
     // Make an API request to the Alpha Vantage API
@@ -123,87 +107,6 @@
           }]
         });
       });
-    
-     // Make an API request to the Alpha Vantage API for NVDA
-    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=NVDA&interval=5min&apikey=T9E9P8GECPM5AX8S')
-      .then(response => response.json())
-      .then(data => {
-        // Parse the data to extract the information we need
-        let seriesData = data['Time Series (5min)'];
-        let series = [];
-        for (let date in seriesData) {
-          let point = [
-            new Date(date).getTime(),
-            parseFloat(seriesData[date]['4. close'])
-          ];
-          series.push(point);
-        }
-        // Create the chart
-        Highcharts.chart('chart-container-3{
-          chart: {
-            type: 'line'
-          },
-          title: {
-            text: 'Intraday Stock Price for NVDA
-          },
-          xAxis: {
-            type: 'datetime',
-            labels: {
-              format: '{value:%Y-%m-%d %H:%M:%S}'
-            },
-          },
-          yAxis: {
-            title: {
-              text: 'Price'
-            }
-          },
-          series: [{
-            name: 'NVDA
-            data: series
-          }]
-        });
-      });
-    
-     // Make an API request to the Alpha Vantage API for VIX
-    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=VIX&interval=5min&apikey=T9E9P8GECPM5AX8S')
-      .then(response => response.json())
-      .then(data => {
-        // Parse the data to extract the information we need
-        let seriesData = data['Time Series (5min)'];
-        let series = [];
-        for (let date in seriesData) {
-          let point = [
-            new Date(date).getTime(),
-            parseFloat(seriesData[date]['4. close'])
-          ];
-          series.push(point);
-        }
-        // Create the chart
-        Highcharts.chart('chart-container-2', {
-          chart: {
-            type: 'line'
-          },
-          title: {
-            text: 'Intraday Stock Price for VIX
-          },
-          xAxis: {
-            type: 'datetime',
-            labels: {
-              format: '{value:%Y-%m-%d %H:%M:%S}'
-            },
-          },
-          yAxis: {
-            title: {
-              text: 'Price'
-            }
-          },
-          series: [{
-            name: 'VIX
-            data: series
-          }]
-        });
-      });
-    
   </script>
 </body>
 </html>
