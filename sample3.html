@@ -6,12 +6,11 @@
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <style>
     /* Define a container for the rows */
-.rows {
-  display: grid; /* Use grid layout */
-  grid-template-columns: repeat(2, 1fr); /* 2 columns, each taking up equal space */
-  grid-template-rows: repeat(2, 1fr); /* 2 rows, each taking up equal space */
-}
-
+    .rows {
+      display: grid; /* Use grid layout */
+      grid-template-columns: repeat(2, 1fr); /* 2 columns, each taking up equal space */
+      grid-template-rows: repeat(2, 1fr); /* 2 rows, each taking up equal space */
+    }
 
     /* Define a class for the column elements */
     .column {
@@ -20,35 +19,31 @@
   </style>
 </head>
 <body>
- 
   
-<div class="rows">
-    <div class="row">
-      <div class="column" id="chart-container-1">
-        <label for="symbol-input-1">Enter stock symbol:</label>
-        <input type="text" id="symbol-input-1">
-        <button id="search-button-1">Search</button>
-      </div>
-      
-      <div class="column" id="chart-container-2">
-        <label for="symbol-input-2">Enter stock symbol:</label>
-        <input type="text" id="symbol-input-2">
-        <button id="search-button-2">Search</button>
-      </div>
+  <div class="rows">
+    <div class="column" id="chart-container-1">
+      <label for="symbol-input-1">Enter stock symbol:</label>
+      <input type="text" id="symbol-input-1">
+      <button id="search-button-1">Search</button>
     </div>
     
-    <div class="row">
-      <div class="column" id="chart-container-3">
-        <label for="symbol-input-3">Enter stock symbol:</label>
-        <input type="text" id="symbol-input-3">
-        <button id="search-button-3">Search</button>
-      </div>
+    <div class="column" id="chart-container-2">
+      <label for="symbol-input-2">Enter stock symbol:</label>
+      <input type="text" id="symbol-input-2">
+      <button id="search-button-2">Search</button>
+    </div>
+    
+    <div class="column" id="chart-container-3">
+      <label for="symbol-input-3">Enter stock symbol:</label>
+      <input type="text" id="symbol-input-3">
+      <button id="search-button-3">Search</button>
+    </div>
       
-      <div class="column" id="chart-container-4">
-        <label for="symbol-input-4">Enter stock symbol:</label>
-        <input type="text" id="symbol-input-4">
-        <button id="search-button-4">Search</button>
-      </div>
+    <div class="column" id="chart-container-4">
+      <label for="symbol-input-4">Enter stock symbol:</label>
+      <input type="text" id="symbol-input-4">
+      <button id="search-button-4">Search</button>
+    </div>
     </div>
   </div>
   
