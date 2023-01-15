@@ -4,7 +4,6 @@
   <title>Stock Dashboard</title>
   <!-- Load the Highcharts library -->
   <script src="https://code.highcharts.com/highcharts.js"></script>
-  
   <style>
     /* Define a container for the rows */
     .rows {
@@ -21,25 +20,7 @@
     .column {
       flex: 1; /* Each column should take up equal space */
     }
-    /* Add some styling for the search form */
-    .search-form {
-      margin: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
-    }
-    .search-form input[type="text"] {
-      padding: 5px;
-      width: 200px;
-    }
-    .search-form input[type="submit"] {
-      padding: 5px 10px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
   </style>
-  
 </head>
 <body>
   
@@ -49,42 +30,27 @@
   <button id="search-button">Search</button>
 </div>
   
-<div class="rows">
+  <div class="rows">
     <div class="row">
-      <div class="column" id="chart-container-1">
-        <label for="symbol-input-1">Enter stock symbol:</label>
-        <input type="text" id="symbol-input-1">
-        <button id="search-button-1">Search</button>
-      </div>
-      
-      <div class="column" id="chart-container-2">
-        <label for="symbol-input-2">Enter stock symbol:</label>
-        <input type="text" id="symbol-input-2">
-        <button id="search-button-2">Search</button>
-      </div>
+      <!-- Create a container element for the first chart -->
+      <div class="column" id="chart-container-1"></div>
+    
+      <!-- Create a container element for the second chart -->
+      <div class="column" id="chart-container-2"></div>
     </div>
     
     <div class="row">
-      <div class="column" id="chart-container-3">
-        <label for="symbol-input-3">Enter stock symbol:</label>
-        <input type="text" id="symbol-input-3">
-        <button id="search-button-3">Search</button>
-      </div>
-      
-      <div class="column" id="chart-container-4">
-        <label for="symbol-input-4">Enter stock symbol:</label>
-        <input type="text" id="symbol-input-4">
-        <button id="search-button-4">Search</button>
-      </div>
+      <!-- Create a container element for the third chart -->
+      <div class="column" id="chart-container-3"></div>
+    
+      <!-- Create a container element for the fourth chart -->
+      <div class="column" id="chart-container-4"></div>
     </div>
   </div>
-
   
-  <script>
-    // Search button for chart 1
-    document.getElementById("search-button-1").addEventListener("click", function() {
-      let symbol = document.getElementById("symbol-input-1").value;
-      
+ <script>
+    document.getElementById("search-button").addEventListener("click", function() {
+      let symbol = document.getElementById("symbol-input").value;
       // Make an API request to the Alpha Vantage API
       fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
         .then(response => response.json())
@@ -128,11 +94,6 @@
   </script>
   
   <script>
-    
-        // Search button for chart 1
-    document.getElementById("search-button-1").addEventListener("click", function() {
-      let symbol = document.getElementById("symbol-input-2").value;
-    
     // Make an API request to the Alpha Vantage API
     fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=5min&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
@@ -174,11 +135,6 @@
       });
     
      // Make an API request to the Alpha Vantage API for MSFT
-      
-        // Search button for chart 2
-    document.getElementById("search-button-2").addEventListener("click", function() {
-      let symbol = document.getElementById("symbol-input-2").value;
-      
     fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
       .then(data => {
@@ -220,11 +176,6 @@
   </script>
   
   <script>
-    
-            // Search button for chart 3
-    document.getElementById("search-button-1").addEventListener("click", function() {
-      let symbol = document.getElementById("symbol-input-3").value;
-      
     // Make an API request to the Alpha Vantage API
     fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=NVDA&interval=5min&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
@@ -266,11 +217,6 @@
       });
     
      // Make an API request to the Alpha Vantage API for MSFT
-      
-              // Search button for chart 4
-    document.getElementById("search-button-4").addEventListener("click", function() {
-      let symbol = document.getElementById("symbol-input-4").value;
-      
     fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=GOOGL&interval=5min&apikey=T9E9P8GECPM5AX8S')
       .then(response => response.json())
       .then(data => {
