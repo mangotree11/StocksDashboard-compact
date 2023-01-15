@@ -35,6 +35,12 @@
       <!-- Create a container element for the first chart -->
       <div class="column" id="chart-container-1"></div>
     
+         <div>
+    <label for="symbol-input2">Enter stock symbol:</label>
+    <input type="text" id="symbol-input2">
+    <button id="search-button2">Search</button>
+  </div>
+      
       <!-- Create a container element for the second chart -->
       <div class="column" id="chart-container-2"></div>
     </div>
@@ -93,11 +99,6 @@
     });
   </script>
   
-   <div>
-    <label for="symbol-input2">Enter stock symbol:</label>
-    <input type="text" id="symbol-input2">
-    <button id="search-button2">Search</button>
-  </div>
   <div class="column" id="chart-container-2"></div>
   <script>
     document.getElementById("search-button2").addEventListener("click", function() {
