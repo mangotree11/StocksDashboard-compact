@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Dashboard</title>
+  <!-- Load the Highcharts library -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <style>
+    /* Define a container for the rows */
+    .rows {
+      display: flex; /* Use flex layout */
+      flex-wrap: wrap; /* Allow the rows to wrap to the next line */
+    }
+
+    /* Define a class for the row elements */
+    .row {
+      width: 50%; /* Each row should take up the full width of the container */
+    }
+
+    /* Define a class for the column elements */
+    .column {
+      flex: 1; /* Each column should take up equal space */
+    }
+  </style>
+</head>
+<body>
+  
+<div>
+  <label for="symbol-input">Enter stock symbol:</label>
+  <input type="text" id="symbol-input">
+  <button id="search-button">Search</button>
+</div>
+  
+  <div class="rows">
+    <div class="row">
+      <!-- Create a container element for the first chart -->
+      <div class="column" id="chart-container-1"></div>
+    
+         <div>
+    <label for="symbol-input2">Enter stock symbol:</label>
+    <input type="text" id="symbol-input2">
+    <button id="search-button2">Search</button>
+  </div>
+      
+      <!-- Create a container element for the second chart -->
+      <div class="column" id="chart-container-2"></div>
+    </div>
+    
+    <div class="row">
+      <!-- Create a container element for the third chart -->
+      <div class="column" id="chart-container-3"></div>
+    
+      <!-- Create a container element for the fourth chart -->
+      <div class="column" id="chart-container-4"></div>
+    </div>
+  </div>
+  
+ <script>
+    document.getElementById("search-button").addEventListener("click", function() {
+      let symbol = document.getElementById("symbol-input").value;
+      // Make an API request to the Alpha Vantage API
+      fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
+        .then(response => response.json())
+        .then(data => {
+          // Parse the data to extract the information we need
+          let seriesData = data['Time Series (5min)'];
+          let series = [];
+          for (let date in seriesData) {
+            let point = [
+              new Date(date).getTime(), // convert the date string to a timestamp
+              parseFloat(seriesData[date]['4. close']) // convert the close price to a number
+            ];
+            series.push(point);
+          }
+          // Create the chart
+          Highcharts.chart('chart-container-1', {
+            chart: {
+              type: 'line'
+            },
+            title: {
+              text: `Intraday Stock Price for ${symbol}`
+            },
+            xAxis: {
+              type: 'datetime',
+              labels: {
+                format: '{value:%Y-%m-%d %H:%M:%S}'
+              },
+            },
+            yAxis: {
+              title: {
+                text: 'Price'
+              }
+            },
+            series: [{
+              name: symbol,
+              data: series
+            }]
+          });
+        });
+    });
+  </script>
+  
+  <div class="column" id="chart-container-2"></div>
+  <script>
+    document.getElementById("search-button2").addEventListener("click", function() {
+      let symbol = document.getElementById("symbol-input2").value;
+      // Make an API request to the Alpha Vantage API
+      fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
+        .then(response => response.json())
+        .then(data => {
+          // Parse the data to extract the information we need
+          let seriesData = data['Time Series (5min)'];
+          let series = [];
+          for (let date in seriesData) {
+            let point = [
+              new Date(date).getTime(), // convert the date string to a timestamp
+              parseFloat(seriesData[date]['4. close']) // convert the close price to a number
+            ];
+            series.push(point);
+          }
+          // Create the chart
+          Highcharts.chart('chart-container-2', {
+            chart: {
+              type: 'line'
+            },
+            title: {
+              text: `Intraday Stock Price for ${symbol}`
+            },
+            xAxis: {
+              type: 'datetime',
+              labels: {
+                format: '{value:%Y-%m-%d %H:%M:%S}'
+              },
+            },
+            yAxis: {
+              title: {
+                text: 'Price'
+              }
+            },
+            series: [{
+              name: symbol,
+              data: series
+            }]
+          });
+        });
+    });
+  </script>
+  
+  <script>
+    // Make an API request to the Alpha Vantage API
+    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=5min&apikey=T9E9P8GECPM5AX8S')
+      .then(response => response.json())
+      .then(data => {
+        // Parse the data to extract the information we need
+        let seriesData = data['Time Series (5min)'];
+        let series = [];
+        for (let date in seriesData) {
+          let point = [
+            new Date(date).getTime(), // convert the date string to a timestamp
+            parseFloat(seriesData[date]['4. close']) // convert the close price to a number
+          ];
+          series.push(point);
+        }
+        // Create the chart
+        Highcharts.chart('chart-container-1', {
+          chart: {
+            type: 'line'
+          },
+          title: {
+            text: 'Intraday Stock Price for AAPL'
+          },
+          xAxis: {
+            type: 'datetime',
+            labels: {
+              format: '{value:%Y-%m-%d %H:%M:%S}'
+            },
+          },
+          yAxis: {
+            title: {
+              text: 'Price'
+            }
+          },
+          series: [{
+            name: 'AAPL',
+            data: series
+          }]
+        });
+      });
+    
+     // Make an API request to the Alpha Vantage API for MSFT
+    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&apikey=T9E9P8GECPM5AX8S')
+      .then(response => response.json())
+      .then(data => {
+        // Parse the data to extract the information we need
+        let seriesData = data['Time Series (5min)'];
+        let series = [];
+        for (let date in seriesData) {
+          let point = [
+            new Date(date).getTime(),
+            parseFloat(seriesData[date]['4. close'])
+          ];
+          series.push(point);
+        }
+        // Create the chart
+        Highcharts.chart('chart-container-2', {
+          chart: {
+            type: 'line'
+          },
+          title: {
+            text: 'Intraday Stock Price for MSFT'
+          },
+          xAxis: {
+            type: 'datetime',
+            labels: {
+              format: '{value:%Y-%m-%d %H:%M:%S}'
+            },
+          },
+          yAxis: {
+            title: {
+              text: 'Price'
+            }
+          },
+          series: [{
+            name: 'MSFT',
+            data: series
+          }]
+        });
+      });
+  </script>
+  
+  <script>
+    // Make an API request to the Alpha Vantage API
+    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=NVDA&interval=5min&apikey=T9E9P8GECPM5AX8S')
+      .then(response => response.json())
+      .then(data => {
+        // Parse the data to extract the information we need
+        let seriesData = data['Time Series (5min)'];
+        let series = [];
+        for (let date in seriesData) {
+          let point = [
+            new Date(date).getTime(), // convert the date string to a timestamp
+            parseFloat(seriesData[date]['4. close']) // convert the close price to a number
+          ];
+          series.push(point);
+        }
+        // Create the chart
+        Highcharts.chart('chart-container-3', {
+          chart: {
+            type: 'line'
+          },
+          title: {
+            text: 'Intraday Stock Price for NVDA'
+          },
+          xAxis: {
+            type: 'datetime',
+            labels: {
+              format: '{value:%Y-%m-%d %H:%M:%S}'
+            },
+          },
+          yAxis: {
+            title: {
+              text: 'Price'
+            }
+          },
+          series: [{
+            name: 'NVDA',
+            data: series
+          }]
+        });
+      });
+    
+     // Make an API request to the Alpha Vantage API for MSFT
+    fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=GOOGL&interval=5min&apikey=T9E9P8GECPM5AX8S')
+      .then(response => response.json())
+      .then(data => {
+        // Parse the data to extract the information we need
+        let seriesData = data['Time Series (5min)'];
+        let series = [];
+        for (let date in seriesData) {
+          let point = [
+            new Date(date).getTime(),
+            parseFloat(seriesData[date]['4. close'])
+          ];
+          series.push(point);
+        }
+        // Create the chart
+        Highcharts.chart('chart-container-4', {
+          chart: {
+            type: 'line'
+          },
+          title: {
+            text: 'Intraday Stock Price for GOOGL'
+          },
+          xAxis: {
+            type: 'datetime',
+            labels: {
+              format: '{value:%Y-%m-%d %H:%M:%S}'
+            },
+          },
+          yAxis: {
+            title: {
+              text: 'Price'
+            }
+          },
+          series: [{
+            name: 'GOOGL',
+            data: series
+          }]
+        });
+      });
+  </script>
+</body>
+</html>
