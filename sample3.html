@@ -62,7 +62,7 @@
   </div>
   
  <script>
-    document.getElementById("chart-1-searchn").addEventListener("click", function() {
+    document.getElementById("chart-1-search").addEventListener("click", function() {
       let symbol = document.getElementById("symbol-input").value;
       // Make an API request to the Alpha Vantage API
       fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
