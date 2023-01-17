@@ -24,27 +24,24 @@
 </head>
 <body>
   
-<div>
-  <label for="symbol-input">Enter stock symbol:</label>
-  <input type="text" id="symbol-input">
-  <button id="search-button">Search</button>
-</div>
-  
   <div class="rows">
     <div class="row">
       <!-- Create a container element for the first chart -->
-      <div class="column" id="chart-container-1"></div>
+      <div class="column">
+        <label for="chart-1-search">Search for a stock:</label>
+        <input type="text" id="chart-1-search">
+        <button id="chart-1-search-button">Go</button>
+        <div id="chart-container-1"></div>
+      </div>
     
-         <div>
-    <label for="symbol-input2">Enter stock symbol:</label>
-    <input type="text" id="symbol-input2">
-    <button id="search-button2">Search</button>
-  </div>
-      
       <!-- Create a container element for the second chart -->
-      <div class="column" id="chart-container-2"></div>
+      <div class="column">
+        <label for="chart-2-search">Search for a stock:</label>
+        <input type="text" id="chart-2-search">
+        <button id="chart-2-search-button">Go</button>
+        <div id="chart-container-2"></div>
+      </div>
     </div>
-    
     <div class="row">
       <!-- Create a container element for the third chart -->
       <div class="column">
@@ -55,12 +52,17 @@
       </div>
     
       <!-- Create a container element for the fourth chart -->
-      <div class="column" id="chart-container-4"></div>
+      <div class="column">
+        <label for="chart-4-search">Search for a stock:</label>
+        <input type="text" id="chart-4-search">
+        <button id="chart-4-search-button">Go</button>
+        <div id="chart-container-4"></div>
+      </div>
     </div>
   </div>
   
  <script>
-    document.getElementById("search-button").addEventListener("click", function() {
+    document.getElementById("chart-1-searchn").addEventListener("click", function() {
       let symbol = document.getElementById("symbol-input").value;
       // Make an API request to the Alpha Vantage API
       fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
