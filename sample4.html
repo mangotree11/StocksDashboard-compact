@@ -125,7 +125,7 @@
       e.preventDefault(); // prevent the form from refreshing the page
 
       // Get the value of the input element
-      const stockSymbol = document.getElementById('chart-1-input').value;
+      const stockSymbol = document.getElementById('chart-2-input').value;
 
       // Make an API request to the Alpha Vantage API
       fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stockSymbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
