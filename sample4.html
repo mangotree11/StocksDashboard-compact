@@ -116,12 +116,19 @@
     });
   </script>
   
-  <div class="column" id="chart-container-2"></div>
   <script>
-    document.getElementById("search-button2").addEventListener("click", function() {
-      let symbol = document.getElementById("chart-2-input").value;
+    // Get the form element
+    const chart1Form = document.getElementById('chart-2-form');
+
+    // Add a submit event listener to the form
+    chart1Form.addEventListener('submit', e => {
+      e.preventDefault(); // prevent the form from refreshing the page
+
+      // Get the value of the input element
+      const stockSymbol = document.getElementById('chart-1-input').value;
+
       // Make an API request to the Alpha Vantage API
-      fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
+      fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stockSymbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
         .then(response => response.json())
         .then(data => {
           // Parse the data to extract the information we need
@@ -140,7 +147,7 @@
               type: 'line'
             },
             title: {
-              text: `Intraday Stock Price for ${symbol}`
+              text: `Intraday Stock Price for ${stockSymbol}`
             },
             xAxis: {
               type: 'datetime',
@@ -154,7 +161,7 @@
               }
             },
             series: [{
-              name: symbol,
+              name: stockSymbol,
               data: series
             }]
           });
