@@ -165,6 +165,56 @@
       });
   });
 </script>
+      
+<script>
+  // Get the form and input elements
+  let chart3Form = document.getElementById('chart-3-form');
+  let chart3Input = document.getElementById('chart-3-input');
+  
+  // Add an event listener for the form's submit event
+  chart2Form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    let symbol = chart3Input.value;
+    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
+      .then(response => response.json())
+      .then(data => {
+        // Parse the data to extract the information we need
+        let seriesData = data['Time Series (5min)'];
+        let series = [];
+        for (let date in seriesData) {
+          let point = [
+            new Date(date).getTime(),
+            parseFloat(seriesData[date]['4. close'])
+          ];
+          series.push(point);
+        }
+        // Create the chart
+        Highcharts.chart('chart-container-3', {
+          chart: {
+            type: 'line'
+          },
+          title: {
+            text: `Intraday Stock Price for ${symbol}`
+          },
+          xAxis: {
+            type: 'datetime',
+            labels: {
+              format: '{value:%Y-%m-%d %H:%M:%S}'
+            },
+          },
+          yAxis: {
+            title: {
+              text: 'Price'
+            }
+          },
+          series: [{
+            name: symbol,
+            data: series
+          }]
+        });
+      });
+  });
+</script>
 
   
   <script>
