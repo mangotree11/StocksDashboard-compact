@@ -224,7 +224,7 @@
   // Add an event listener for the form's submit event
   chart4Form.addEventListener('submit', function(event) {
     event.preventDefault();
-    let symbol = chart3Input.value;
+    let symbol = chart4Input.value;
     fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
       .then(response => response.json())
       .then(data => {
