@@ -52,11 +52,12 @@
   <a href="about.html" class="button">about</a>
   <a href="contact.html" class="button">contact</a>
   <a href="view.html" class="button">view</a>
-  <a href="assessability.html" class="button">assessability</a>
-  <a href="sample6.html" class="button">light mode</a>
+  <a href="sample7.html" class="button">light mode</a>
   <a href="feedback.html" class="button">feedback</a>
   <a href="https://www.instagram.com/stonkmarket101" class="button">educational</a>
   <a href="subscription.html" class="button">subscription</a>
+  <button onclick="zoom(10)">+</button>
+  <button onclick="zoom(-10)">-</button>
 </h2>
   <div class="rows">
     <div class="row">
@@ -201,6 +202,13 @@
         });
       });
   });
+  function zoom(delta) {
+  var zoomLevel = parseInt(document.body.style.zoom) || 100;
+  zoomLevel += delta;
+  if (zoomLevel > 0) {
+    document.body.style.zoom = zoomLevel + "%";
+  }
+}
 </script>
       
 <script>
