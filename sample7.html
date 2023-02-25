@@ -48,6 +48,9 @@
   <a href="contact.html" class="button">contact</a>
   <a href="view.html" class="button">view</a>
   <a href="assessability.html" class="button">assessability</a>
+  // Zooms in and out of the page
+  <button onclick="zoomIn()">+</button>
+  <button onclick="zoomOut()">-</button>
   <a href="darkmode.html" class="button">dark mode</a>
   <a href="feedback.html" class="button">feedback</a>
   <a href="https://www.instagram.com/stonkmarket101" class="button">educational</a>
@@ -94,6 +97,13 @@
       </div>
   
   <script>
+  function zoomIn() {
+  document.body.style.zoom = "150%" /* Increase the zoom level by 50% */
+}
+
+function zoomOut() {
+  document.body.style.zoom = "100%" /* Reset the zoom level to 100% */
+}
     // Get the form element
     const chart1Form = document.getElementById('chart-1-form');
 
