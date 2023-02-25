@@ -51,8 +51,8 @@
   <a href="feedback.html" class="button">feedback</a>
   <a href="https://www.instagram.com/stonkmarket101" class="button">educational</a>
   <a href="subscription.html" class="button">subscription</a>
-  <button onclick="zoomIn()">+</button>
-  <button onclick="zoomOut()">-</button>
+  <button onclick="zoom(10)">+</button>
+  <button onclick="zoom(-10)">-</button>
   
 </h2>
   <div class="rows">
@@ -146,12 +146,13 @@
           });
         });
     });
-    function zoomIn() {
-  document.body.style.zoom = "150%" /* Increase the zoom level by 50% */
-}
-
-    function zoomOut() {
-  document.body.style.zoom = "100%" /* Reset the zoom level to 100% */
+    
+function zoom(delta) {
+  var zoomLevel = parseInt(document.body.style.zoom) || 100;
+  zoomLevel += delta;
+  if (zoomLevel > 0) {
+    document.body.style.zoom = zoomLevel + "%";
+  }
 }
   </script>
   
