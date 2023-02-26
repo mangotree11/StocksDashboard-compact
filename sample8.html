@@ -475,26 +475,6 @@ function zoom(delta) {
           }]
         });
       });
-      
-      // Add a click event listener to each toggle button
-['1', '2', '3', '4'].forEach(chartNum => {
-  const chartToggleButton = document.getElementById(`chart-${chartNum}-toggle-button`);
-  chartToggleButton.addEventListener('click', () => {
-    // Get a reference to the Highcharts chart object
-    const chartContainer = document.getElementById(`chart-container-${chartNum}`);
-    const chart = Highcharts.chart(chartContainer);
-
-    // Determine the new chart type
-    const newType = chart.options.chart.type === 'line' ? 'candlestick' : 'line';
-
-    // Update the chart type
-    chart.update({
-      chart: {
-        type: newType
-      }
-    });
-  });
-});
   </script>
 </body>
 </html>
