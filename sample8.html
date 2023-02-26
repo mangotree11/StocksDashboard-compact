@@ -4,9 +4,6 @@
   <title>Stock Dashboard</title>
   <!-- Load the Highcharts library -->
   <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/modules/stock.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
-  <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <style>
     h1 {
       text-align: center;
@@ -44,11 +41,6 @@
   flex: 1; /* Each column should take up equal space */
   text-align: center; /* Center the content horizontally */
     }
-      .button-toggle {
-  font-size: 0.7em;
-  color: black;
-  margin-left: 10px;
-}
   </style>
 </head>
 <body>
@@ -75,7 +67,6 @@
         <form id="chart-1-form">
           <input type="text" placeholder="Enter stock symbol" id="chart-1-input">
           <button type="submit" id="chart-1-button">Search</button>
-          <button type="button" class="button-toggle" id="chart-1-toggle">Toggle</button>
         </form>
         <div id="chart-container-1"></div>
       </div>
@@ -158,28 +149,6 @@
               data: series
             }]
           });
-        
-          // Get the chart-1-toggle button
-      const chart1Toggle = document.getElementById('chart-1-toggle');
-
-      // Add a click event listener to the chart-1-toggle button
-      chart1Toggle.addEventListener('click', () => {
-        // Toggle between displaying the candlestick and line chart
-        if (chart.options.chart.type === 'line') {
-          chart.update({
-            chart: {
-              type: 'candlestick'
-            }
-          });
-        } else {
-          chart.update({
-            chart: {
-              type: 'line'
-            }
-          });
-        }
-      });
-        
         });
     });
     
