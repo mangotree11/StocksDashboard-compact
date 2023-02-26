@@ -60,45 +60,51 @@
   <a href="features.html" class="button">features</a>
   
 </h2>
-  <div class="rows">
-    <div class="row">
-      <!-- Create a container element for the first chart -->
-      <div class="column">
-        <form id="chart-1-form">
-          <input type="text" placeholder="Enter stock symbol" id="chart-1-input">
-          <button type="submit" id="chart-1-button">Search</button>
-        </form>
-        <div id="chart-container-1"></div>
-      </div>
-    
-      <!-- Create a container element for the second chart -->
-      <div class="column">
-        <form id="chart-2-form">
-          <input type="text" placeholder="Enter stock symbol" id="chart-2-input">
-          <button type="submit" id="chart-2-button">Search</button>
-        </form>
-        <div id="chart-container-2"></div>
-      </div>
+<div class="rows">
+  <div class="row">
+    <!-- Create a container element for the first chart -->
+    <div class="column">
+      <form id="chart-1-form">
+        <input type="text" placeholder="Enter stock symbol" id="chart-1-input">
+        <button type="submit" id="chart-1-button">Search</button>
+        <button type="button" id="chart-1-toggle-button">Toggle</button>
+      </form>
+      <div id="chart-container-1"></div>
     </div>
-    
-    <div class="row">
-      <!-- Create a container element for the third chart -->
-      <div class="column">
-        <form id="chart-3-form">
-          <input type="text" placeholder="Enter stock symbol" id="chart-3-input">
-          <button type="submit" id="chart-3-button">Search</button>
-        </form>
-        <div id="chart-container-3"></div>
-      </div>
-    
-      <!-- Create a container element for the fourth chart -->
-      <div class="column">
-        <form id="chart-4-form">
-          <input type="text" placeholder="Enter stock symbol" id="chart-4-input">
-          <button type="submit" id="chart-4-button">Search</button>
-        </form>
-        <div id="chart-container-4"></div>
-      </div>
+
+    <!-- Create a container element for the second chart -->
+    <div class="column">
+      <form id="chart-2-form">
+        <input type="text" placeholder="Enter stock symbol" id="chart-2-input">
+        <button type="submit" id="chart-2-button">Search</button>
+        <button type="button" id="chart-2-toggle-button">Toggle</button>
+      </form>
+      <div id="chart-container-2"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Create a container element for the third chart -->
+    <div class="column">
+      <form id="chart-3-form">
+        <input type="text" placeholder="Enter stock symbol" id="chart-3-input">
+        <button type="submit" id="chart-3-button">Search</button>
+        <button type="button" id="chart-3-toggle-button">Toggle</button>
+      </form>
+      <div id="chart-container-3"></div>
+    </div>
+
+    <!-- Create a container element for the fourth chart -->
+    <div class="column">
+      <form id="chart-4-form">
+        <input type="text" placeholder="Enter stock symbol" id="chart-4-input">
+        <button type="submit" id="chart-4-button">Search</button>
+        <button type="button" id="chart-4-toggle-button">Toggle</button>
+      </form>
+      <div id="chart-container-4"></div>
+    </div>
+  </div>
+</div>
   
   <script>
     // Get the form element
@@ -474,6 +480,26 @@ function zoom(delta) {
           }]
         });
       });
+      
+      // Add a click event listener to each toggle button
+['1', '2', '3', '4'].forEach(chartNum => {
+  const chartToggleButton = document.getElementById(`chart-${chartNum}-toggle-button`);
+  chartToggleButton.addEventListener('click', () => {
+    // Get a reference to the Highcharts chart object
+    const chartContainer = document.getElementById(`chart-container-${chartNum}`);
+    const chart = Highcharts.chart(chartContainer);
+
+    // Determine the new chart type
+    const newType = chart.options.chart.type === 'line' ? 'candlestick' : 'line';
+
+    // Update the chart type
+    chart.update({
+      chart: {
+        type: newType
+      }
+    });
+  });
+});
   </script>
 </body>
 </html>
