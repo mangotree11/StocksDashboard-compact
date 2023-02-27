@@ -135,7 +135,7 @@ const chart1 = Highcharts.chart('chart-container-1', {
 // Add toggle button
 const toggleButton = document.createElement('button');
 toggleButton.innerText = 'Toggle Chart Type';
-document.body.appendChild(toggleButton);
+document.getElementById('chart-1-toggle-button').appendChild(toggleButton);
 
 toggleButton.addEventListener('click', function() {
   if (chart1.options.chart.type === 'line') {
