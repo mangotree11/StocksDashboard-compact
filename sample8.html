@@ -161,19 +161,36 @@ function zoom(delta) {
   }
 }
 
-function toggleAllCharts(chartType) {
-  Highcharts.charts.forEach(function(chart) {
-    chart.update({
-      chart: {
-        type: chartType
-      },
-      series: [{
-        type: chartType,
-        name: chart.series[0].name,
-        data: chart.series[0].options.data
-      }]
-    });
-  });
+function toggleChartType() {
+  const charts = document.querySelectorAll(".chart-container");
+
+  for (let i = 0; i < charts.length; i++) {
+    const chart = Highcharts.charts[i];
+
+    if (chart.options.chart.type === "line") {
+      chart.update({
+        chart: {
+          type: "candlestick"
+        },
+        series: [{
+          type: "candlestick",
+          name: chart.series[0].name,
+          data: chart.series[0].options.data
+        }]
+      });
+    } else {
+      chart.update({
+        chart: {
+          type: "line"
+        },
+        series: [{
+          type: "line",
+          name: chart.series[0].name,
+          data: chart.series[0].options.data
+        }]
+      });
+    }
+  }
 }
   </script>
   
