@@ -71,7 +71,7 @@
         <form id="chart-1-form">
           <input type="text" placeholder="Enter stock symbol" id="chart-1-input">
           <button type="submit" id="chart-1-button">Search</button>
-          <button type="button" id="toggle-chart-1-button" onclick="toggleChartType()">Toggle chart type</button>
+          <button type="button" id="toggle-chart-1-button" onclick="toggleChartType(chart1)">Toggle chart type</button>
         </form>
         <div id="chart-container-1"></div>
       </div>
@@ -81,7 +81,7 @@
         <form id="chart-2-form">
           <input type="text" placeholder="Enter stock symbol" id="chart-2-input">
           <button type="submit" id="chart-2-button">Search</button>
-          <button type="button" id="toggle-chart-2-button" onclick="toggleChartType()">Toggle chart type</button>
+          <button type="button" id="toggle-chart-2-button" onclick="toggleChartType(chart2)">Toggle chart type</button>
         </form>
         <div id="chart-container-2"></div>
       </div>
@@ -93,7 +93,7 @@
         <form id="chart-3-form">
           <input type="text" placeholder="Enter stock symbol" id="chart-3-input">
           <button type="submit" id="chart-3-button">Search</button>
-          <button type="button" id="toggle-chart-3-button" onclick="toggleChartType()">Toggle chart type</button>
+          <button type="button" id="toggle-chart-3-button" onclick="toggleChartType(chart3)">Toggle chart type</button>
         </form>
         <div id="chart-container-3"></div>
       </div>
@@ -103,7 +103,7 @@
         <form id="chart-4-form">
           <input type="text" placeholder="Enter stock symbol" id="chart-4-input">
           <button type="submit" id="chart-4-button">Search</button>
-          <button type="button" id="toggle-chart-4-button" onclick="toggleChartType()">Toggle chart type</button>
+          <button type="button" id="toggle-chart-4-button" onclick="toggleChartType(chart4)">Toggle chart type</button>
         </form>
         <div id="chart-container-4"></div>
       </div>
@@ -485,18 +485,29 @@ function zoom(delta) {
   </script>
   
  <script>
- function toggleChartType(chart) {
-  // Get the chart object
-  const chartObj = Highcharts.charts[chart];
-
-  // Get the current chart type
-  const currentType = chartObj.series[0].type;
-
-  // Switch to the opposite chart type
-  if (currentType === 'line') {
-    chartObj.series[0].update({type: 'candlestick'});
+function toggleChartType(chart) {
+  if (chart.options.chart.type === "line") {
+    chart.update({
+      chart: {
+        type: "candlestick"
+      },
+      series: [{
+        type: "candlestick",
+        name: chart.series[0].name,
+        data: chart.series[0].options.data
+      }]
+    });
   } else {
-    chartObj.series[0].update({type: 'line'});
+    chart.update({
+      chart: {
+        type: "line"
+      },
+      series: [{
+        type: "line",
+        name: chart.series[0].name,
+        data: chart.series[0].options.data
+      }]
+    });
   }
 }
 </script>
