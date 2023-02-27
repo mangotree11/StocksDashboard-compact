@@ -4,6 +4,10 @@
   <title>Stock Dashboard</title>
   <!-- Load the Highcharts library -->
   <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <style>
     h1 {
       text-align: center;
@@ -67,6 +71,7 @@
         <form id="chart-1-form">
           <input type="text" placeholder="Enter stock symbol" id="chart-1-input">
           <button type="submit" id="chart-1-button">Search</button>
+          <button type="button" id="toggle-chart-1-button" onclick="toggleChartType()">Toggle chart type</button>
         </form>
         <div id="chart-container-1"></div>
       </div>
@@ -76,6 +81,7 @@
         <form id="chart-2-form">
           <input type="text" placeholder="Enter stock symbol" id="chart-2-input">
           <button type="submit" id="chart-2-button">Search</button>
+          <button type="button" id="toggle-chart-2-button" onclick="toggleChartType()">Toggle chart type</button>
         </form>
         <div id="chart-container-2"></div>
       </div>
@@ -87,6 +93,7 @@
         <form id="chart-3-form">
           <input type="text" placeholder="Enter stock symbol" id="chart-3-input">
           <button type="submit" id="chart-3-button">Search</button>
+          <button type="button" id="toggle-chart-3-button" onclick="toggleChartType()">Toggle chart type</button>
         </form>
         <div id="chart-container-3"></div>
       </div>
@@ -96,6 +103,7 @@
         <form id="chart-4-form">
           <input type="text" placeholder="Enter stock symbol" id="chart-4-input">
           <button type="submit" id="chart-4-button">Search</button>
+          <button type="button" id="toggle-chart-4-button" onclick="toggleChartType()">Toggle chart type</button>
         </form>
         <div id="chart-container-4"></div>
       </div>
