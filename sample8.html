@@ -4,7 +4,6 @@
   <title>Stock Dashboard</title>
   <!-- Load the Highcharts library -->
   <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/stock/highstock.js"></script>
   <style>
     h1 {
       text-align: center;
@@ -61,105 +60,97 @@
   <a href="features.html" class="button">features</a>
   
 </h2>
-<div class="rows">
-  <div class="row">
-    <!-- Create a container element for the first chart -->
-    <div class="column">
-      <form id="chart-1-form">
-        <input type="text" placeholder="Enter stock symbol" id="chart-1-input">
-        <button type="submit" id="chart-1-button">Search</button>
-        <button type="button" id="chart-1-toggle-button">Toggle</button>
-      </form>
-      <div id="chart-container-1"></div>
+  <div class="rows">
+    <div class="row">
+      <!-- Create a container element for the first chart -->
+      <div class="column">
+        <form id="chart-1-form">
+          <input type="text" placeholder="Enter stock symbol" id="chart-1-input">
+          <button type="submit" id="chart-1-button">Search</button>
+        </form>
+        <div id="chart-container-1"></div>
+      </div>
+    
+      <!-- Create a container element for the second chart -->
+      <div class="column">
+        <form id="chart-2-form">
+          <input type="text" placeholder="Enter stock symbol" id="chart-2-input">
+          <button type="submit" id="chart-2-button">Search</button>
+        </form>
+        <div id="chart-container-2"></div>
+      </div>
     </div>
-
-    <!-- Create a container element for the second chart -->
-    <div class="column">
-      <form id="chart-2-form">
-        <input type="text" placeholder="Enter stock symbol" id="chart-2-input">
-        <button type="submit" id="chart-2-button">Search</button>
-        <button type="button" id="chart-2-toggle-button">Toggle</button>
-      </form>
-      <div id="chart-container-2"></div>
-    </div>
-  </div>
-
-  <div class="row">
-    <!-- Create a container element for the third chart -->
-    <div class="column">
-      <form id="chart-3-form">
-        <input type="text" placeholder="Enter stock symbol" id="chart-3-input">
-        <button type="submit" id="chart-3-button">Search</button>
-        <button type="button" id="chart-3-toggle-button">Toggle</button>
-      </form>
-      <div id="chart-container-3"></div>
-    </div>
-
-    <!-- Create a container element for the fourth chart -->
-    <div class="column">
-      <form id="chart-4-form">
-        <input type="text" placeholder="Enter stock symbol" id="chart-4-input">
-        <button type="submit" id="chart-4-button">Search</button>
-        <button type="button" id="chart-4-toggle-button">Toggle</button>
-      </form>
-      <div id="chart-container-4"></div>
-    </div>
-  </div>
-</div>
+    
+    <div class="row">
+      <!-- Create a container element for the third chart -->
+      <div class="column">
+        <form id="chart-3-form">
+          <input type="text" placeholder="Enter stock symbol" id="chart-3-input">
+          <button type="submit" id="chart-3-button">Search</button>
+        </form>
+        <div id="chart-container-3"></div>
+      </div>
+    
+      <!-- Create a container element for the fourth chart -->
+      <div class="column">
+        <form id="chart-4-form">
+          <input type="text" placeholder="Enter stock symbol" id="chart-4-input">
+          <button type="submit" id="chart-4-button">Search</button>
+        </form>
+        <div id="chart-container-4"></div>
+      </div>
   
   <script>
-// Define series and stockSymbol variables
-let series = [];
-let stockSymbol = '';
+    // Get the form element
+    const chart1Form = document.getElementById('chart-1-form');
 
-// Create the chart
-const chart1 = Highcharts.chart('chart-container-1', {
-  chart: {
-    type: 'line'
-  },
-  title: {
-    text: `Intraday Stock Price for ${stockSymbol}`
-  },
-  xAxis: {
-    type: 'datetime',
-    labels: {
-      format: '{value:%Y-%m-%d %H:%M:%S}'
-    },
-  },
-  yAxis: {
-    title: {
-      text: 'Price'
-    }
-  },
-  series: [{
-    name: stockSymbol,
-    data: series
-  }]
-});
+    // Add a submit event listener to the form
+    chart1Form.addEventListener('submit', e => {
+      e.preventDefault(); // prevent the form from refreshing the page
 
-// Add toggle button
-const toggleButton = document.createElement('button');
-toggleButton.innerText = 'Toggle Chart Type';
-document.getElementById('chart-1-toggle-button').appendChild(toggleButton);
+      // Get the value of the input element
+      const stockSymbol = document.getElementById('chart-1-input').value;
 
-toggleButton.addEventListener('click', function() {
-  if (chart1.options.chart.type === 'line') {
-    chart1.update({
-      chart: {
-        type: 'candlestick'
-      }
+      // Make an API request to the Alpha Vantage API
+      fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stockSymbol}&interval=5min&apikey=T9E9P8GECPM5AX8S`)
+        .then(response => response.json())
+        .then(data => {
+          // Parse the data to extract the information we need
+          let seriesData = data['Time Series (5min)'];
+          let series = [];
+          for (let date in seriesData) {
+            let point = [
+              new Date(date).getTime(), // convert the date string to a timestamp
+              parseFloat(seriesData[date]['4. close']) // convert the close price to a number
+            ];
+            series.push(point);
+          }
+          // Create the chart
+          Highcharts.chart('chart-container-1', {
+            chart: {
+              type: 'line'
+            },
+            title: {
+              text: `Intraday Stock Price for ${stockSymbol}`
+            },
+            xAxis: {
+              type: 'datetime',
+              labels: {
+                format: '{value:%Y-%m-%d %H:%M:%S}'
+              },
+            },
+            yAxis: {
+              title: {
+                text: 'Price'
+              }
+            },
+            series: [{
+              name: stockSymbol,
+              data: series
+            }]
+          });
+        });
     });
-  } else {
-    chart1.update({
-      chart: {
-        type: 'line'
-      }
-    });
-  }
-});
-</script>
-
-<script>
     
 function zoom(delta) {
   var zoomLevel = parseInt(document.body.style.zoom) || 100;
