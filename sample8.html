@@ -483,5 +483,22 @@ function zoom(delta) {
         });
       });
   </script>
+  
+ <script>
+ function toggleChartType(chart) {
+  // Get the chart object
+  const chartObj = Highcharts.charts[chart];
+
+  // Get the current chart type
+  const currentType = chartObj.series[0].type;
+
+  // Switch to the opposite chart type
+  if (currentType === 'line') {
+    chartObj.series[0].update({type: 'candlestick'});
+  } else {
+    chartObj.series[0].update({type: 'line'});
+  }
+}
+</script>
 </body>
 </html>
