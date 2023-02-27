@@ -108,7 +108,11 @@
 </div>
   
   <script>
- // Create the chart
+// Define series and stockSymbol variables
+let series = [];
+let stockSymbol = '';
+
+// Create the chart
 const chart1 = Highcharts.chart('chart-container-1', {
   chart: {
     type: 'line'
