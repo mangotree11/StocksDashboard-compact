@@ -58,7 +58,7 @@
   <a href="https://www.instagram.com/stonkmarket101" class="button">educational</a>
   <a href="gopro.html" class="button">go pro</a>
   <a href="features.html" class="button">features</a>
-  <button onclick="toggleChartType(myChart)">Toggle Chart Type</button>
+  <button onclick="toggleChartType()">Toggle Chart Type</button>
   
 </h2>
   <div class="rows">
@@ -162,29 +162,32 @@ function zoom(delta) {
 }
 
 function toggleChartType() {
-  var chart = $('#container').highcharts();
-  if (chart.options.chart.type === "line") {
-    chart.update({
-      chart: {
-        type: "candlestick"
-      },
-      series: [{
-        type: "candlestick",
-        name: chart.series[0].name,
-        data: chart.series[0].options.data
-      }]
-    });
-  } else {
-    chart.update({
-      chart: {
-        type: "line"
-      },
-      series: [{
-        type: "line",
-        name: chart.series[0].name,
-        data: chart.series[0].options.data
-      }]
-    });
+  var charts = Highcharts.charts;
+  for (var i = 0; i < charts.length; i++) {
+    var chart = charts[i];
+    if (chart.options.chart.type === "line") {
+      chart.update({
+        chart: {
+          type: "candlestick"
+        },
+        series: [{
+          type: "candlestick",
+          name: chart.series[0].name,
+          data: chart.series[0].options.data
+        }]
+      });
+    } else {
+      chart.update({
+        chart: {
+          type: "line"
+        },
+        series: [{
+          type: "line",
+          name: chart.series[0].name,
+          data: chart.series[0].options.data
+        }]
+      });
+    }
   }
 }
   </script>
