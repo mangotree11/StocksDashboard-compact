@@ -102,6 +102,16 @@
         </form>
         <div id="chart-container-4"></div>
       </div>
+      
+   <script>
+function zoom(delta) {
+  var zoomLevel = parseInt(document.body.style.zoom) || 100;
+  zoomLevel += delta;
+  if (zoomLevel > 0) {
+    document.body.style.zoom = zoomLevel + "%";
+  }
+}
+  </script>
   
   <script>
     // Get the form element
@@ -154,14 +164,6 @@
           });
         });
     });
-    
-function zoom(delta) {
-  var zoomLevel = parseInt(document.body.style.zoom) || 100;
-  zoomLevel += delta;
-  if (zoomLevel > 0) {
-    document.body.style.zoom = zoomLevel + "%";
-  }
-}
   </script>
   
 <script>
