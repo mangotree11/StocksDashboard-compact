@@ -125,42 +125,32 @@
             ];
             series.push(point);
           }
-          // Create the chart
-          Highcharts.chart('chart-container-1', {
-  chart: {
-    type: 'candlestick'
-  },
-  title: {
-    text: `Intraday Stock Price for ${stockSymbol}`
-  },
-  xAxis: {
-    type: 'datetime',
-    labels: {
-      format: '{value:%Y-%m-%d %H:%M:%S}'
+           Highcharts.stockChart('container', {
+    rangeSelector: {
+      selected: 1
     },
-  },
-  yAxis: {
+
     title: {
-      text: 'Price'
-    }
-  },
-  series: [{
-    name: stockSymbol,
-    data: series
-  }],
-  plotOptions: {
-    candlestick: {
-      color: 'red',
-      upColor: 'green'
-    }
-  },
-  dataGrouping: {
-    units: [
-      ['minute', [1, 5, 15, 30]],
-      ['hour', [1, 2, 4, 6, 8, 12]],
-      ['day', [1]]
-    ]
-  }
+      text: 'AAPL Stock Price'
+    },
+
+    series: [{
+      type: 'candlestick',
+      name: 'AAPL Stock Price',
+      data: data,
+      dataGrouping: {
+        units: [
+          [
+            'week', // unit name
+            [1] // allowed multiples
+          ], [
+            'month',
+            [1, 2, 3, 4, 6]
+          ]
+        ]
+      }
+    }]
+  });
 });
 
     
