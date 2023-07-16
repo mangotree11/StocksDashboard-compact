@@ -171,150 +171,104 @@ function zoom(delta) {
   
 <script>
   // Chart 1
-  fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=5min&apikey=demo')
-    .then(r => r.json())
-    .then(data => {
-      let seriesData = data['Time Series (5min)'];
-      let series = [];
-      for (let date in seriesData) {
-        series.push([
-          date,
-          parseFloat(seriesData[date]['4. close'])
-        ]);
-      }
+Highcharts.chart('chart-container-1', {
+  chart: {
+    type: 'bar'
+  },
+  title: {
+    text: 'AAPL Intraday Price'  
+  },
+  yAxis: {
+    type: 'category',
+    title: {
+      text: 'Time'
+    }
+  },
+  xAxis: {
+    title: {
+      text: 'Price'
+    }
+  },
+  series: [{
+    name: 'AAPL', 
+    data: series
+  }]
+});
 
-      Highcharts.chart('chart-container-1', {
-        chart: {
-          type: 'bar'
-        },
-        title: {
-          text: 'AAPL Intraday Price'
-        },
-        xAxis: {
-          type: 'category'
-        },
-        yAxis: {
-          title: {
-            text: 'Price'  
-          }
-        },
-        series: [{
-          name: 'AAPL',
-          data: series
-        }]
-      });
-  });
-</script>
+// Chart 2
+Highcharts.chart('chart-container-2', {
+  chart: {
+    type: 'bar'
+  },
+  title: {
+    text: 'MSFT Intraday Price'
+  },
+  yAxis: {
+    type: 'category',
+    title: {
+      text: 'Time'
+    }
+  },
+  xAxis: {
+    title: {
+      text: 'Price'
+    }
+  },
+  series: [{
+    name: 'MSFT',
+    data: series 
+  }]
+});
 
-<script>
-  // Chart 2
-  fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&apikey=demo')
-    .then(r => r.json())
-    .then(data => {
-      let seriesData = data['Time Series (5min)'];
-      let series = [];
-      for (let date in seriesData) {
-        series.push([
-          date,  
-          parseFloat(seriesData[date]['4. close'])
-        ]);
-      }
+// Chart 3  
+Highcharts.chart('chart-container-3', {
+  chart: {
+    type: 'bar'
+  },
+  title: {
+    text: 'NVDA Intraday Price'
+  },
+  yAxis: {
+    type: 'category',
+    title: {
+      text: 'Time'
+    }
+  },
+  xAxis: {
+    title: {
+      text: 'Price'
+    }
+  },
+  series: [{
+    name: 'NVDA',
+    data: series
+  }]
+});
 
-      Highcharts.chart('chart-container-2', {
-        chart: {
-          type: 'bar'
-        },
-        title: {
-          text: 'MSFT Intraday Price'
-        },
-        xAxis: {
-          type: 'category' 
-        },
-        yAxis: {
-          title: {
-            text: 'Price'
-          }
-        },
-        series: [{
-          name: 'MSFT',
-          data: series 
-        }]
-      });
-  }); 
-</script>
-
-<script>
-  // Chart 3
-  fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=NVDA&interval=5min&apikey=demo')
-    .then(r => r.json())
-    .then(data => {
-      let seriesData = data['Time Series (5min)'];
-      let series = [];
-      for (let date in seriesData) {
-        series.push([
-          date, 
-          parseFloat(seriesData[date]['4. close'])
-        ]);
-      }
-
-      Highcharts.chart('chart-container-3', {
-        chart: {
-          type: 'bar'
-        },
-        title: {
-          text: 'NVDA Intraday Price'
-        },
-        xAxis: {
-          type: 'category' 
-        },
-        yAxis: {
-          title: {
-            text: 'Price'
-          }
-        },
-        series: [{
-          name: 'NVDA',
-          data: series
-        }]  
-      });
-  });
-</script>
-
-<script>
-  // Chart 4
-  fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=GOOGL&interval=5min&apikey=demo')
-    .then(r => r.json())
-    .then(data => {
-      let seriesData = data['Time Series (5min)'];
-      let series = [];
-      for (let date in seriesData) {
-        series.push([
-          date,
-          parseFloat(seriesData[date]['4. close'])
-        ]);
-      }
-
-      Highcharts.chart('chart-container-4', {
-        chart: {
-          type: 'bar' 
-        },
-        title: {
-          text: 'GOOGL Intraday Price'
-        },
-        xAxis: {
-          type: 'category'
-        },
-        yAxis: {
-          title: {
-            text: 'Price'
-          }
-        },
-        series: [{
-          name: 'GOOGL',
-          data: series
-        }]
-      });
-  });
+// Chart 4
+Highcharts.chart('chart-container-4', {
+  chart: {
+    type: 'bar'
+  },
+  title: {
+    text: 'GOOGL Intraday Price'
+  },
+  yAxis: {
+    type: 'category',
+    title: {
+      text: 'Time'
+    }
+  },
+  xAxis: {
+    title: {
+      text: 'Price'
+    }
+  },
+  series: [{
+    name: 'GOOGL',
+    data: series
+  }]  
+});
 </script>
 </body>
 </html>
