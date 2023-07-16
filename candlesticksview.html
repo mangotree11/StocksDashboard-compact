@@ -170,13 +170,13 @@ function zoom(delta) {
   </script>
   
 <script>
-  // Chart 1
+// Chart 1
 Highcharts.chart('chart-container-1', {
   chart: {
     type: 'bar'
   },
   title: {
-    text: 'AAPL Intraday Price'  
+    text: 'AAPL Intraday Price' 
   },
   yAxis: {
     type: 'category',
@@ -190,15 +190,17 @@ Highcharts.chart('chart-container-1', {
     }
   },
   series: [{
-    name: 'AAPL', 
+    name: 'AAPL',
     data: series
   }]
 });
+</script>
 
+<script>
 // Chart 2
 Highcharts.chart('chart-container-2', {
   chart: {
-    type: 'bar'
+    type: 'bar' 
   },
   title: {
     text: 'MSFT Intraday Price'
@@ -216,11 +218,13 @@ Highcharts.chart('chart-container-2', {
   },
   series: [{
     name: 'MSFT',
-    data: series 
+    data: series
   }]
 });
+</script>
 
-// Chart 3  
+<script>
+// Chart 3
 Highcharts.chart('chart-container-3', {
   chart: {
     type: 'bar'
@@ -240,12 +244,14 @@ Highcharts.chart('chart-container-3', {
     }
   },
   series: [{
-    name: 'NVDA',
+    name: 'NVDA', 
     data: series
   }]
 });
+</script>
 
-// Chart 4
+<script>
+// Chart 4  
 Highcharts.chart('chart-container-4', {
   chart: {
     type: 'bar'
@@ -267,7 +273,7 @@ Highcharts.chart('chart-container-4', {
   series: [{
     name: 'GOOGL',
     data: series
-  }]  
+  }]
 });
 </script>
 </body>
